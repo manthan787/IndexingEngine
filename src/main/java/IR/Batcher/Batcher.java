@@ -4,6 +4,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+/**
+ * Class to create batches out of given documents to be indexed
+ * @author Manthan
+ *
+ */
 public class Batcher {
 	
 	protected String corpusPath;
@@ -18,6 +24,11 @@ public class Batcher {
 		this.batchSize = batchSize;
 	}
 	
+	
+	/**
+	 * create batches with the given batch size from the corpus
+	 * @return List of batches
+	 */
 	public ArrayList<Batch> createBatches() {		
 		File folder = new File(this.corpusPath);
 		File[] files = folder.listFiles();		
@@ -30,6 +41,7 @@ public class Batcher {
 		}
 		return batches;
 	}
+	
 	
 	public static void main(String[] args) {
 		Batcher b = new Batcher("/Users/admin/Documents/Java/corpus");

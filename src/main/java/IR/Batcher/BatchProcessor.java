@@ -12,10 +12,21 @@ public class BatchProcessor {
 	
 	protected String batchPath;
 	
+	
+	/**
+	 * Instantiate the object with the path of the batch on disk
+	 * @param batchPath
+	 */
 	public BatchProcessor(String batchPath) {
 		this.batchPath = batchPath;
 	}
 	
+	
+	/**
+	 * Processes the given batch
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void process() throws FileNotFoundException, IOException {
 		Batcher batcher = new Batcher(this.batchPath);
 		ArrayList<Batch> batches = batcher.createBatches();
@@ -23,6 +34,7 @@ public class BatchProcessor {
 			this.processSingleBatch(b);
 		}
 	}
+	
 	
 	protected void processSingleBatch(Batch b) throws FileNotFoundException, IOException {
 		Map<String, String> documents = BatchReader.readBatch(b);
